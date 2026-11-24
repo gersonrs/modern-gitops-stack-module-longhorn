@@ -156,9 +156,9 @@ variable "enable_preupgrade_check" {
 }
 
 variable "enable_service_monitor" {
-  description = "Boolean to enable the deployment of a service monitor."
+  description = "Enable Prometheus ServiceMonitor in the Helm chart. Defaults to true because the Prometheus Operator CRDs are installed by the kube-prometheus-stack crds_bootstrap before any application, so every module can be monitored from the first apply. Set it to false on a specific module to opt that application out."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "additional_alert_labels" {
