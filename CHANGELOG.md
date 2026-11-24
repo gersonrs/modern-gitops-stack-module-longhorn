@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/gersonrs/modern-gitops-stack-module-longhorn/compare/v1.0.0...v1.0.1) (2026-11-24)
+
+
+### 📚 Documentation
+
+* add usage and dependencies to the module documentation ([#6](https://github.com/gersonrs/modern-gitops-stack-module-longhorn/issues/6)) ([e16aebb](https://github.com/gersonrs/modern-gitops-stack-module-longhorn/commit/e16aebb4c1f68920e03eb592e075204dfbae98e2))
+
 ## 1.0.0 (2026-11-24)
 
 
