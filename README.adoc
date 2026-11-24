@@ -3,19 +3,19 @@
 :longhorn-chart-version: 1.13.0
 :original-repo-url: https://github.com/longhorn/longhorn
 
-A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy {original-repo-url}[Longhorn], a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes.
+A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy Longhorn, a lightweight distributed block storage system for Kubernetes.
 
-The Longhorn chart used by this module is shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
+The longhorn chart used by this module is shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
 
 [cols="1,1,1",options="autowidth,header"]
 |===
 |Current Chart Version |Original Repository |Default Values
-|*{longhorn-chart-version}* |{original-repo-url}/tree/master/chart[Chart] |https://artifacthub.io/packages/helm/longhorn/longhorn/{longhorn-chart-version}?modal=values[`values.yaml`]
+|*1.13.0* |https://github.com/longhorn/longhorn/tree/main/chart[longhorn] |https://artifacthub.io/packages/helm/longhorn/longhorn/1.13.0?modal=values[`values.yaml`]
 |===
 
 == Usage
 
-This module can be declared by adding the following block on your Terraform configuration:
+This module can be declared by adding the following block to your Terraform configuration:
 
 [source,terraform]
 ----
@@ -26,22 +26,23 @@ module "longhorn" {
   base_domain    = local.base_domain
   subdomain      = local.subdomain
   cluster_issuer = local.cluster_issuer
-  argocd_project = local.cluster_name
   app_autosync   = local.app_autosync
 
   dependency_ids = {
-    argocd = module.argocd_bootstrap.id
+    argocd = module.argocd.id
   }
 }
 ----
+
+The application is deployed to the `longhorn-system` namespace.
 
 == Technical Reference
 
 === Dependencies
 
-==== `module.argocd_bootstrap.id`
+==== `module.argocd.id`
 
-This module depends on Argo CD resources to be deployed, so it needs do be deployed after the module `argocd_bootstrap`.
+Argo CD applies the application.
 
 // BEGIN_TF_DOCS
 == Requirements
